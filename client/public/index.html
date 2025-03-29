@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat X</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-loader">
+        <div class="terminal-header">
+            <span class="terminal-title">Chat X</span>
+            <div class="loading-animation">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+        </div>
+        <div class="text" id="connection-status">Initializing...</div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    
+    <div class="chat-container" style="display:none">
+        <h2>Chat X</h2>
+        <div id="user-login">
+            <input type="text" id="username" placeholder="Enter username">
+            <button class="pixelated-btn" onclick="connectToServer()">Connect</button>
+        </div>
+        <div id="chat-area" style="display:none">
+            <div id="user-list"></div>
+            <div id="chat-box-container">
+                <div id="chat-box"></div>
+                <div id="message-container">
+                    <input type="text" id="message" placeholder="Type a message...">
+                    <button id="send-btn" class="pixelated-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedUsername = localStorage.getItem("username");
+            const savedPassword = localStorage.getItem("password");
+        
+            if (savedUsername && savedPassword) {
+                document.getElementById("username").value = savedUsername;
+                document.getElementById("password").value = savedPassword;
+                connectToServer();
+            } else {
+                document.getElementById("connection-status").textContent = "Please log in again";
+            }
+        });
+        </script>
+        
+</body>
+</html>
